@@ -19,32 +19,30 @@ public class LoginController {
 
 	@Autowired
 	private LoginService loginService;
-
-	// Adding Login information to the Login Repository
+	
+	//Adding Login information to the Login Repository
 	@PostMapping("/addLogin")
-	public ResponseEntity<String> addLogin(@RequestParam("accountNumber") Long accountNumber,
-			@RequestBody Login login) {
-		// Calling the addLogin method of loginService
+	public ResponseEntity<String> addLogin(@RequestParam("accountNumber") Long accountNumber, @RequestBody Login login) {
+		//Calling the addLogin method of loginService
 		String savedLogin = loginService.addLogin(accountNumber, login);
-		// Returning Bad_Request if can't add the information
-		if (!savedLogin.contains("successfully")) {
+		//Returning Bad_Request if can't add the information
+		if(!savedLogin.contains("successfully")) {
 			return new ResponseEntity<>(savedLogin, HttpStatus.BAD_REQUEST);
 		}
-		// Returning OK if added the information
+		//Returning OK if added the information
 		return new ResponseEntity<>(savedLogin, HttpStatus.OK);
 	}
-
-	// Deleting Login information of the user
+	
+	//Deleting Login information of the user
 	@DeleteMapping("/deleteLogin")
-	public ResponseEntity<String> deleteLogin(@RequestParam("accountNumber") Long accountNumber,
-			@RequestParam("userId") String userId) {
-		// Calling deleteLogin method of loginService
+	public ResponseEntity<String> deleteLogin(@RequestParam("accountNumber") Long accountNumber, @RequestParam("userId") String userId) {
+		//Calling deleteLogin method of loginService
 		String deletedLogin = loginService.deleteLogin(accountNumber, userId);
-		// Returning Bad_Request if deletion not done
-		if (!deletedLogin.contains("successfully")) {
+		//Returning Bad_Request if deletion not done
+		if(!deletedLogin.contains("successfully")) {
 			return new ResponseEntity<>(deletedLogin, HttpStatus.BAD_REQUEST);
 		}
-		// Returning OK if deleted the login information
+		//Returning OK if deleted the login information
 		return new ResponseEntity<>(deletedLogin, HttpStatus.OK);
 	}
 }

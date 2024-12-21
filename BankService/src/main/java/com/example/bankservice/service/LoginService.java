@@ -16,16 +16,16 @@ public class LoginService {
 	UserRepository userRepo;
 	
 	public String addLogin(Long accountNumber, Login login) {
-		//Searching for the account Number for full information
-		User user = userRepo.findById(accountNumber).orElse(null);
-		//Returning message if user information not found
-		if(user==null) return "No account found";
-		//Searching if any another userId is present with same account Number
-		if(loginRepo.findByUser(user)!=null) return "UserId already created";
 		//Searching for the given userId
 		Login findLogin = loginRepo.findById(login.getUserId()).orElse(null);
 		//If found, sending message
 		if(findLogin!=null)  return "UserId not available";
+		//Searching for the account Number for full information
+		User user = userRepo.findById(accountNumber).orElse(null);
+		//Returning message if user information not found
+		if(user==null) return "Please enter valid account number";
+		//Searching if any another userId is present with same account Number
+		if(loginRepo.findByUser(user)!=null) return "LoginId already present";
 		//Setting the user for the login
 		login.setUser(user);
 		//Saving the login credentials to the table
@@ -38,13 +38,13 @@ public class LoginService {
 		//Searching for the login information
 		Login login = loginRepo.findById(userId).orElse(null);
 		//Returning message if no information found
-		if(login==null) return "UserId not valid";
+		if(login==null) return "LoginId not valid";
 		long deleteLoginAccount = login.getUser().getAccountNumber();
 		//Returning message if accountNumber not matched with accountNumber in record for the userId
 		if(deleteLoginAccount!=accountNumber) return "Account number not matching";
 		//Deleting the login record
 		loginRepo.delete(login);
 		//Returning success message
-		return "User deleted successfully"; 
+		return "User deleted successfully";
 	}
 }

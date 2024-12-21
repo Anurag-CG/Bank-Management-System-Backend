@@ -8,7 +8,6 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @EnableDiscoveryClient
 @ComponentScan(basePackages = "com.example.bankservice")
-
 public class BankServiceApplication {
 
 	public static void main(String[] args) {
