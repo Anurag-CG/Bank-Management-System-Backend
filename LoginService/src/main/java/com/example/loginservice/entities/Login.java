@@ -18,9 +18,8 @@ import lombok.Setter;
 public class Login {
 	@Id
 	private String userId;
-	private String password;	
-	
 	@OneToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH })
 	@JoinColumn(name = "accountNumber")
 	private User user;
+	private String password;
 }

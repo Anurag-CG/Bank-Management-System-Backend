@@ -8,13 +8,18 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Setter
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class BankerLogin {
+//Entity format to store the admin login credentials
+public class Admin {
+
 	@Id
-	private String bankerId;
-	private String bankerName;
+	//Variable to store adminId
+	private String adminId;
+	//Variable to store admin name
+	private String adminName;
+	//Variable to store admin password
 	private String password;
 }

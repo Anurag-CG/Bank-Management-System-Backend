@@ -7,6 +7,7 @@ import com.example.loginservice.entities.Login;
 import com.example.loginservice.entities.User;
 
 @Repository
+//Repository to store User Login information
 public interface LoginRepository extends JpaRepository<Login, String>{
 
 	Login findByUser(User user);
