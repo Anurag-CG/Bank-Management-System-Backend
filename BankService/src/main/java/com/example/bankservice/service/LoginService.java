@@ -1,6 +1,7 @@
 package com.example.bankservice.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.example.bankservice.entities.Login;
@@ -15,6 +16,8 @@ public class LoginService {
 	@Autowired
 	UserRepository userRepo;
 	
+	private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12);
+	
 	public String addLogin(Long accountNumber, Login login) {
 		//Searching for the given userId
 		Login findLogin = loginRepo.findById(login.getUserId()).orElse(null);
@@ -28,6 +31,8 @@ public class LoginService {
 		if(loginRepo.findByUser(user)!=null) return "LoginId already present";
 		//Setting the user for the login
 		login.setUser(user);
+		//Encoding the password to save in record
+		login.setPassword(encoder.encode(login.getPassword()));
 		//Saving the login credentials to the table
 		loginRepo.save(login);
 		//Returning success message after saving the information
