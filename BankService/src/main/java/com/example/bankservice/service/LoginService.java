@@ -1,16 +1,16 @@
 package com.example.bankservice.service;
-
+ 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-
+ 
 import com.example.bankservice.entities.Login;
 import com.example.bankservice.entities.User;
 import com.example.bankservice.repository.*;
-
+ 
 @Service
 public class LoginService {
-
+ 
 	@Autowired
 	LoginRepository loginRepo;
 	@Autowired

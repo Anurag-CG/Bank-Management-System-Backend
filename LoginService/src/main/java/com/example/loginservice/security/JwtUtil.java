@@ -58,16 +58,21 @@ public class JwtUtil {
     }
  
     // Method to check if the token is expired
-    private boolean isTokenExpired(String token) {
+    boolean isTokenExpired(String token) {
         return extractExpiration(token).before(new Date());
     }
  
     // Method to extract the expiration date from the token
-    private Date extractExpiration(String token) {
+    Date extractExpiration(String token) {
         return Jwts.parser()
                 .setSigningKey(secretKey)
                 .parseClaimsJws(token)
                 .getBody()
                 .getExpiration();
     }
+
+	public byte[] getSecretKey() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

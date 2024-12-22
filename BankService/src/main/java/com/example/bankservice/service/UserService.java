@@ -94,12 +94,12 @@ public class UserService {
 		//Searching the sender information from User table		
 		User senderAccount = userRepo.findById(transaction.getSenderAccount()).orElse(null);
 		//Returning message if account number is not correct
-		if(senderAccount==null) return "Please enter a valid sender account";
+		if(senderAccount==null) return "Incorrect Sender's Account";
 		else {
 			//Searching for the receiver details from User table
 			User receiverAccount = userRepo.findById(transaction.getReceiverAccount()).orElse(null);
 			//Returning message if receiver's account number is not correct
-			if(receiverAccount==null) return "Please enter a valid Receiver account";
+			if(receiverAccount==null) return "Incorrect Receiver's account";
 			else {
 				//Storing the amount to process later
 				Long amount = transaction.getBalance();

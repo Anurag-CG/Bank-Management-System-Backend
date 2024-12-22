@@ -24,6 +24,7 @@ public class FundService {
 	@Autowired
 	LoginRepository loginRepo;
 	
+
 	@Transactional
 	public String transferFund(FundTransfer transaction) {
 		//Searching for the sender information

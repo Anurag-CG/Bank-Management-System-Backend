@@ -5,15 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Setter
+
 @Entity
 //Format to store the Login information in table
 public class Login {
@@ -29,5 +22,35 @@ public class Login {
 	private User user;
 	//Variable to store the password
 	private String password;
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public Login(String userId, User user, String password) {
+		super();
+		this.userId = userId;
+		this.user = user;
+		this.password = password;
+	}
+	public Login() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
 }
 
